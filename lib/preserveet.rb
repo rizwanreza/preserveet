@@ -19,7 +19,11 @@ class Preserveet
   end
 
   def tweets
-    @client.user_timeline
+    if @client.class == "Twitter::Base"
+      @client.user_timeline
+    else
+      "Please connect to Twitter first: Preserveet#connect_to_twitter"
+    end
   end
 
   def save

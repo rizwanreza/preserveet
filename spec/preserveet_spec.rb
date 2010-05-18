@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Preserveet do
   before do
     @preserveet = Preserveet.new
-    @preserveet.connect_to_twitter
   end
     
   describe "configuration" do
@@ -24,12 +23,22 @@ describe Preserveet do
     ActiveRecord::Base.remove_connection
   end
   
-  it "can connect to Twitter" do
-    @preserveet.connect_to_twitter.class.should == Twitter::Base
+  describe "twitter" do
+    before do
+      @preserveet.connect_to_twitter
+    end
+    
+    it "can connect to Twitter" do
+      @preserveet.connect_to_twitter.class.should == Twitter::Base
+    end
+  
+    it "can trigger Twitter to get tweets" do
+      @preserveet.tweets.should be_an(Array)
+    end
   end
   
-  it "can trigger Twitter to get tweets" do
-    @preserveet.tweets.should be_an(Array)
+  it "outputs a friendly message when the instance is not connected to twitter" do
+    @preserveet.tweets.should =~ /connect to Twitter/
   end
   
   it "has a callback to call on tweets before saving each tweet" do
