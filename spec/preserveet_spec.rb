@@ -33,7 +33,7 @@ describe Preserveet do
     end
   
     it "can trigger Twitter to get tweets" do
-      @preserveet.tweets.should be_an(Array)
+      @preserveet.connect_to_twitter.tweets.should be_an(Array)
     end
   end
   
