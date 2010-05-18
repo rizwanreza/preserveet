@@ -16,7 +16,6 @@ class Preserveet
   def connect_to_twitter(email = config['twitter']['email'], password = config['twitter']['password'])
     httpauth = Twitter::HTTPAuth.new(config['twitter']['email'], config['twitter']['password'])
     @client = Twitter::Base.new(httpauth)
-    
   end
 
   def tweets
