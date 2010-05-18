@@ -24,7 +24,7 @@ describe Preserveet do
   end
   
   it "can connect to Twitter" do
-    @preserveet.connect_to_twitter.class.should be_a(Twitter::Base)
+    @preserveet.connect_to_twitter.class.should == Twitter::Base
   end
   
   it "can trigger Twitter to get tweets" do
