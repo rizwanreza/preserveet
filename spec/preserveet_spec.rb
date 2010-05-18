@@ -28,8 +28,7 @@ describe Preserveet do
   end
   
   it "can trigger Twitter to get tweets" do
-    tweets = @preserveet.tweets
-    puts tweets.first
+    @preserveet.tweets.should be_an(Array)
   end
   
   it "has a callback to call on tweets before saving each tweet" do
