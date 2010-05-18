@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Preserveet do
   before do
     @preserveet = Preserveet.new
+    @preserveet.connect_to_twitter
   end
     
   describe "configuration" do
